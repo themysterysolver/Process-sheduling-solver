@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chcekbox input</title>
+    <title>input</title>
 </head>
 <body>
-    <input type="text" id="AT">
-    <input type="text" id="BT">
+    <input type="text" id="AT" placeholder="Eg:0 1 2 3 4 5">
+    <input type="text" id="BT" placeholder="Eg:0 1 2 3 4 5">
     <button onclick="processInput()">submit</button>
     <p id="display"></p>
     <script>
         function processInput(){
             let at=document.getElementById("AT").value;
             let bt=document.getElementById("BT").value;
-            let split_at=at.split(' ');let split_bt=bt.split(' ');
-            split_at=split_at.map(Number);
-            split_bt=split_bt.map(Number);
+            let split_at=at.split(' ').filter(item => item!='').map(Number);
+            let split_bt=bt.split(' ').filter(item => item!='').map(Number);
             console.log(split_at);
             console.log(split_bt);
             document.getElementById("display").innerHTML=""+split_at+"\n"+split_bt;
