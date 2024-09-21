@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>output</title>
+    <style>
+        table,th,td{
+            border: solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="AT" placeholder="Eg:0 1 2 3">
+    <button onclick="populateTable()">SUBMIT</button>
+    <table id="table output">
+        <thread>
+            <tr>
+                <th>SNO</th>
+                <th>NUMBERS</th>
+            </tr>
+        </thread>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <script>
+        function populateTable(){
+            let array_AT=document.getElementById("AT").value.split(' ').filter(item => item!='').map(Number);
+            let tableBody=document.getElementById("tableBody");
+            tableBody.innerHTML='';
+            array_AT.forEach((num,index)=>{
+                let row=document.createElement('tr');
+                let col1=document.createElement('td');
+                let col2=document.createElement('td');
+                col1.textContent=index+1;
+                col2.textContent=num;
+                row.appendChild(col1);
+                row.appendChild(col2);
+                tableBody.appendChild(row);
+            })
+        }
+    </script>
+</body>
+</html>
