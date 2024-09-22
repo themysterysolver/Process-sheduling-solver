@@ -65,3 +65,7 @@ button{
     font-size: x-large;
     font-weight: bolder;
 }
+tr,td,th{
+    border: solid black;
+    border-collapse: collapse;
+}
