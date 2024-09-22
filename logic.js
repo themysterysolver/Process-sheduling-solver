@@ -98,6 +98,7 @@ function calculate(){
     let choice=document.getElementById("myOption").value;
     if(choice==""){
         show1();
+        return
     }
     let array_AT=document.getElementById("AT").value.split(' ').filter(item=>item!='').map(Number)
     let array_BT=document.getElementById("BT").value.split(' ').filter(item=>item!='').map(Number)
