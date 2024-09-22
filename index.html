@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CPU sheduling solver</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="container">
+        <div id="left">
+            <div id="header">Input</div>
+            <div class="entry"><label  for="myOption">Algorithm</label></div>
+            <select id="myOption">
+                <option value="" disabled selected>Select an option</option>
+                <option value="FCFS">First Come First Served,FCFS</option>
+                <option value="SJF">Shortest Job First,SJF</option>
+                <option value="SRTF">Shortest,SRTF</option>
+                <option value="PPS">Premptive priority Sheduling,PPS</option>
+                <option value="NPPS">Non-Premptive Prioity Sheduling,NPPS</option>
+                <option value="RR">Round Robin,RR</option>
+            </select>
+            <div class="inputs-group">
+                <div class="forLabel"><lable for="AT">Arrival time</lable></div>
+                <div class="entry"><input type="text" id="AT" placeholder="Eg:0 1 2 3 4 5"></div>
+            </div>
+            <div class="inputs-group">
+                <div class="forLabel"><lable for="AT">Burst time</lable></div>
+                <div class="entry"><input type="text" id="BT" placeholder="Eg:0 1 2 3 4 5"></div>
+            </div>
+            <div id="forButton"><button onclick="calculate()">Solve</button></div>
+        </div>
+        <div id="seperator"></div>
+        <div id="right">
+            <div id="header">Output</div>
+            <div><p>Gantt chart and table will be shown here</p></div>
+        </div>
+    </div>
+    <script src="logic.js"></script>
 </body>
 </html>
