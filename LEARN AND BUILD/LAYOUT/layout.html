@@ -8,16 +8,27 @@
         body {
             margin: 0;
             padding: 0;
+            text-align: left;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
-        #left{
+        #left{  
             float:left;
-            background-color:red;
             width:30%;
         }
         #right{
             float:right;
             background-color:yellow;
             width:65%;
+        }
+        #left,#right{
+            box-sizing: border-box;
+            background-color:rgb(255, 255, 255);
+            padding:2% 1.5% 2% 1.5%;
+            border-radius:10%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35)
+        }
+        #right{
+            border-radius:3%;
         }
         #sepaerator{
             width:5%
@@ -29,21 +40,68 @@
             margin-top:5%;
             overflow: auto;
         }
-        
-        
+        button{
+            background-color: rgb(38, 132, 255);
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+            
+            padding:2%;
+            border:none;
+            width:25%;
+            height:30%;
+            font-size:large;
+        }
+        .inputs-group{
+            box-sizing: border-box;
+            margin-top:3%;
+            margin-right:3%;
+            margin-bottom:3%;
+            align-items: center;
+        }
+        .entry,.forLabel{
+            margin:2%;
+        }
+        #myOption,input{
+            width: 75%;
+            border: 1px solid rgb(197, 199, 208);
+            border-radius: 5px;
+            padding: 11px 12px;
+            font-size: 14px;
+        }
+        #header{
+            font-size: x-large;
+            font-weight: bolder;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="left">
-            <div id="header"><h1>Input</h1></div>
+            <div id="header">Input</div>
+            <div class="entry"><label  for="myOption">Algorithm</label></div>
+            <select id="myOption">
+                <option value="" disabled selected>Select an option</option>
+                <option value="FCFS">First Come First Served,FCFS</option>
+                <option value="SJF">Shortest Job First,SJF</option>
+                <option value="SRTF">Shortest,SRTF</option>
+                <option value="PPS">Premptive priority Sheduling,PPS</option>
+                <option value="NPPS">Non-Premptive Prioity Sheduling,NPPS</option>
+                <option value="RR">Round Robin,RR</option>
+            </select>
+            <div class="inputs-group">
+                <div class="forLabel"><lable for="AT">Arrival time</lable></div>
+                <div class="entry"><input type="text" id="AT" placeholder="Eg:0 1 2 3 4 5"></div>
+            </div>
+            <div class="inputs-group">
+                <div class="forLabel"><lable for="AT">Burst time</lable></div>
+                <div class="entry"><input type="text" id="BT" placeholder="Eg:0 1 2 3 4 5"></div>
+            </div>
+            <div id="forButton"><button onclick="calculate()">Solve</button></div>
         </div>
-        <dic id="seperator">
-
-        </dic>
+        <dic id="seperator"></dic>
         <div id="right">
-            <div id="header"><h1>Output</h1></div>
-
+            <div id="header">Output</div>
+            <div><p>Gantt chart and table will be shown here</p></div>
         </div>
     </div>
         
