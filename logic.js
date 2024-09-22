@@ -96,9 +96,16 @@ function sjf(at,bt){
 }
 function calculate(){
     let choice=document.getElementById("myOption").value;
+    if(choice==""){
+        show1();
+    }
     let array_AT=document.getElementById("AT").value.split(' ').filter(item=>item!='').map(Number)
     let array_BT=document.getElementById("BT").value.split(' ').filter(item=>item!='').map(Number)
+    if(array_AT.length!=array_BT.length){
+        show();
+    }
     document.getElementById("tableOutput").style.display='block';
+    document.getElementById("note").style.display="none";
     tableBody.innerHTML='';
     console.log(choice);
     let result;
@@ -130,4 +137,24 @@ function calculate(){
             break;
     }
 
+}
+function show(){
+    document.getElementById("model").style.display="block";
+    document.getElementById("overlay").style.display="block";
+    console.log('show');
+}
+function closeModel(){
+    document.getElementById("model").style.display="none";
+    document.getElementById("overlay").style.display="none";
+    console.log('close');
+}
+function show1(){
+    document.getElementById("model1").style.display="block";
+    document.getElementById("overlay").style.display="block";
+    console.log('show');
+}
+function closeModel1(){
+    document.getElementById("model1").style.display="none";
+    document.getElementById("overlay").style.display="none";
+    console.log('close');
 }

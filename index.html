@@ -8,6 +8,17 @@
 </head>
 <body>
     <div id="container">
+    <div id="overlay"></div>
+    <div id="model">
+        <h1>Invalid Input!!</h1>
+        <p>Length of Arrival time and Burst time does not Match</p>
+        <div id="forJustify"><button onclick="closeModel()">ok</button></div>
+    </div>
+    <div id="model1">
+        <h1>Choose first!</h1>
+        <p>Select an algorithm to solve</p>
+        <div id="forJustify"><button onclick="closeModel1()">ok</button></div>
+    </div>
         <div id="left">
             <div id="header">Input</div>
             <div class="entry"><label  for="myOption">Algorithm</label></div>
@@ -33,7 +44,20 @@
         <div id="seperator"></div>
         <div id="right">
             <div id="header">Output</div>
-            <div><p>Gantt chart and table will be shown here</p></div>
+            <div id="note"><p>Gantt chart and table will be shown here</p></div>
+            <table id="tableOutput">
+                <thread>
+                    <tr>
+                        <th>Process number</th>
+                        <th>Arrival time</th>
+                        <th>Burst Time</th>
+                        <th>Completion Time</th>
+                        <th>Turn Around Time</th>
+                        <th>Waiting time</th>
+                    </tr>
+                </thread>
+                <tbody id="tableBody"></tbody>
+            </table>
         </div>
     </div>
     <script src="logic.js"></script>
