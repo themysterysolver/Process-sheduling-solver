@@ -39,6 +39,14 @@
                 <div class="forLabel"><lable for="AT">Burst time</lable></div>
                 <div class="entry"><input type="text" id="BT" placeholder="Eg:0 1 2 3 4 5"></div>
             </div>
+            <div class="inputs-group" id="forPriority">
+                <div class="forLabel"><lable for="P">Priority</lable></div>
+                <div class="entry"><input type="text" id="P" placeholder="low has higher priority"></div>
+            </div>
+            <div class="inputs-group" id="forRR">
+                <div class="forLabel"><lable for="R">Time Quantum</lable></div>
+                <div class="entry"><input type="number" id="R" placeholder="TQ>0"></div>
+            </div>
             <div id="forButton"><button onclick="calculate()">Solve</button></div>
         </div>
         <div id="seperator"></div>

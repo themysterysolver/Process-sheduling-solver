@@ -97,3 +97,6 @@ tr,td,th{
     display: flex;
     justify-content: flex-end;
 }
+#forPriority,#forRR{
+    display: none;
+}

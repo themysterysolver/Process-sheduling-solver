@@ -1,3 +1,18 @@
+document.getElementById("myOption").addEventListener("change",function(){
+    let choice=this.value;
+    if(choice=="PPS"||choice=="NPPS"){
+        document.getElementById("forPriority").style.display='block';
+        document.getElementById("forRR").style.display='none';
+    }
+    else if(choice=="RR"){
+        document.getElementById("forPriority").style.display='none';
+        document.getElementById("forRR").style.display='block';
+    }
+    else{
+        document.getElementById("forPriority").style.display='none';
+        document.getElementById("forRR").style.display='none';
+    }
+})
 function display(result){
     const nrow=result[0].length;
     const ncol=result.length;
