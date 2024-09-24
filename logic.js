@@ -159,9 +159,19 @@ function calculate(){
     }
     let array_AT=document.getElementById("AT").value.split(' ').filter(item=>item!='').map(Number)
     let array_BT=document.getElementById("BT").value.split(' ').filter(item=>item!='').map(Number)
-    if(array_AT.length!=array_BT.length){
-        show();
-    }
+    let priority_array=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number);
+        if(choice=="NPPS"||choice=="PPS"){
+            if(array_AT.length!=priority_array.length||array_BT.length!=priority_array.length)
+            document.getElementById("changeForPriority").innerHTML='Length of priority,arraival time and burst time should match';
+            show();
+            return;
+        }
+        else if(array_AT.length!=array_BT.length){
+            document.getElementById("changeForPriority").innerHTML='Length of Arrival time and Burst time does not Match';
+            show();
+            return;
+        }
+    
     document.getElementById("tableOutput").style.display='block';
     document.getElementById("note").style.display="none";
     tableBody.innerHTML='';
