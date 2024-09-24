@@ -109,6 +109,48 @@ function sjf(at,bt){
     console.log('waiting time:'+wt);
     return [indices,array_at,array_bt,completion_time,tat,wt]
 }
+function npps(at,bt,pt){
+    let array_at=at;
+    let array_bt=bt;
+    const n=array_at.length;
+    let completion_time=new Array(n).fill(0);
+    let indices = Array.from({ length: at.length },(_,i) =>i);
+    indices.sort((a,b)=>pt[a]-pt[b]);
+    array_at=indices.map(i=>array_at[i]);
+    array_bt=indices.map(i=>array_bt[i]);
+    console.log(indices);
+    let completed=0
+    let current_time=0
+    let isCompleted=new Array(n).fill(0);
+    for(let i=0;i<n;i++){
+        isCompleted[i]=0;
+    }
+    while(completed!=n){
+        let min=-1;
+        for(let i=0;i<n;i++){
+            if(isCompleted[i]==0 && array_at[i]<=current_time){
+                if(min==-1||pt[min]>pt[i]){
+                    min=i;
+                }
+            }
+        }
+        if(min!=-1){
+            current_time += array_bt[min];
+            completion_time[min] = current_time;
+            isCompleted[min]=1;
+            completed++;
+        }
+        else{
+            current_time++;
+        }
+    }
+    let tat=turn_around_time(completion_time,array_at);
+    let wt=waiting_time(tat,array_bt);
+    console.log('completion time:'+completion_time);
+    console.log('tat time:'+tat);
+    console.log('waiting time:'+wt);
+    return [indices,array_at,array_bt,completion_time,tat,wt]
+}
 function calculate(){
     let choice=document.getElementById("myOption").value;
     if(choice==""){
@@ -143,7 +185,10 @@ function calculate(){
             
             break;
         case "NPPS":
-            
+            let array_PT=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number)
+            result=npps(array_AT,array_BT,array_PT)
+            console.log(result)
+            display(result)
             break;
         case "RR":
             
