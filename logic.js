@@ -157,6 +157,12 @@ function calculate(){
         show1();
         return
     }
+    if(choice=="RR"){
+        if(document.getElementById("R").value<1){
+            alert("Time quantum shouldbe always positive!!!");
+        }
+        return;
+    }
     let array_AT=document.getElementById("AT").value.split(' ').filter(item=>item!='').map(Number)
     let array_BT=document.getElementById("BT").value.split(' ').filter(item=>item!='').map(Number)
     let priority_array=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number);
