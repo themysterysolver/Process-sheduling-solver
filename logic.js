@@ -305,7 +305,6 @@ function calculate(){
             
             break;
         default:
-            
             break;
     }
 
