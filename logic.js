@@ -151,6 +151,50 @@ function npps(at,bt,pt){
     console.log('waiting time:'+wt);
     return [indices,array_at,array_bt,completion_time,tat,wt]
 }
+function srtf(at,bt){
+    let array_at=at;
+    let array_bt=bt.slice();
+    const n=array_at.length;
+    let completion_time=new Array(n).fill(0);
+    let indices=Array.from({length:at.length},(_,i)=>i);
+    indices.sort((a,b)=>array_at[a]-array_at[b]);
+    array_at=indices.map(i=>array_at[i]);
+    array_bt=indices.map(i=>array_bt[i]);
+    console.log(indices);
+    let completed=0;
+    let current_time=0;
+    let isCompleted=new Array(n).fill(false);
+    while(completed!=n){
+        let min=-1;
+        for(let i=0;i<n;i++){
+            if(!isCompleted[i] && array_at[i]<=current_time){
+                if(min==-1||array_bt[min]>array_bt[i]){
+                    min=i;
+                }
+            }
+        }
+        if(min!=-1){
+            current_time++;
+            array_bt[min]--;
+            if(array_bt[min]==0){
+                isCompleted[min]=true;
+                completion_time[min]=current_time;
+                completed++;
+            }
+        }
+        else{
+            current_time++;
+        }
+        console.log(current_time,array_bt);
+    }
+    let tat=turn_around_time(completion_time,array_at);
+    let wt=waiting_time(tat,bt);
+    console.log('completion time:'+completion_time);
+    console.log('tat time:'+tat);
+    console.log('waiting time:'+wt);
+    return [indices,array_at,bt,completion_time,tat,wt]
+
+}
 function calculate(){
     let choice=document.getElementById("myOption").value;
     if(choice==""){
@@ -196,7 +240,9 @@ function calculate(){
             display(result)
             break;
         case "SRTF":
-            
+            result=srtf([0,1,2,3],[8,4,9,5])
+            console.log(result)
+            display(result)
             break;
         case "PPS":
             
