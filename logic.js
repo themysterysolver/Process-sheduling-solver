@@ -290,7 +290,7 @@ function calculate(){
             break;
         case "PPS":
             array_PT=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number)
-            result=pps([1,2,3,4,5],[10,9,8,7,6],[5,4,3,2,1])
+            result=pps(array_AT,array_BT,array_PT);
             console.log(result)
             display(result)
             break;
