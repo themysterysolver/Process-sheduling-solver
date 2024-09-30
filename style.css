@@ -65,9 +65,34 @@ button{
     font-size: x-large;
     font-weight: bolder;
 }
+table{
+    border-collapse:collapse ;
+    width:100%;
+    text-align: left;
+}
 tr,td,th{
-    border: solid black;
+    border:solid rgb(69, 68, 68) 1px;
     border-collapse: collapse;
+    font-size: medium;
+    font-weight: 100;
+    border-width: 1px;
+    border-color: rgb(206, 202, 202);
+}
+td,th{
+    padding: 10px;
+}
+th{
+    font-weight: bolder;
+    font-size: medium; 
+    color: rgb(109, 113, 135);
+    background-color: rgb(240, 240, 241);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+tr:hover{
+    background-color: #f2f6fb;
+}
+tr{
+    width: 100%;
 }
 #tableOutput{
     display: none;
