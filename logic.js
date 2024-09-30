@@ -265,7 +265,8 @@ function calculate(){
             show();
             return;
         }
-    
+    document.getElementById("what").innerHTML=choice;
+    document.getElementById("what").style.display='block'
     document.getElementById("tableOutput").style.display='block';
     document.getElementById("note").style.display="none";
     tableBody.innerHTML='';

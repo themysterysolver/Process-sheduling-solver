@@ -22,6 +22,8 @@ body {
 }
 #right{
     border-radius:3%;
+    position: relative;
+    padding: 20px;
 }
 #sepaerator{
     width:5%
@@ -124,4 +126,15 @@ tr{
 }
 #forPriority,#forRR{
     display: none;
+}
+#what{
+    position: absolute;
+    padding: 2%;
+    top:15px;
+    right: 15px;
+    padding: 5px;
+    display: none;
+    border:rgb(141, 187, 190);
+    background-color: rgb(199, 235, 247);
+    border-radius: 10%;
 }
