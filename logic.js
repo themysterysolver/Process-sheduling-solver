@@ -195,6 +195,49 @@ function srtf(at,bt){
     return [indices,array_at,bt,completion_time,tat,wt]
 
 }
+function pps(at,bt,pt){
+    let array_at=at;
+    let array_bt=bt.slice();
+    const n=array_at.length;
+    let completion_time=new Array(n).fill(0);
+    let indices=Array.from({length:at.length},(_,i)=>i);
+    indices.sort((a,b)=>array_at[a]-array_at[b]);
+    array_at=indices.map(i=>array_at[i]);
+    array_bt=indices.map(i=>array_bt[i]);
+    console.log(indices);
+    let completed=0;
+    let current_time=0;
+    let isCompleted=new Array(n).fill(false);
+    while(completed!=n){
+        let min=-1;
+        for(let i=0;i<n;i++){
+            if(!isCompleted[i] && array_at[i]<=current_time){
+                if(min==-1||pt[min]>pt[i]){
+                    min=i;
+                }
+            }
+        }
+        if(min!=-1){
+            current_time++;
+            array_bt[min]--;
+            if(array_bt[min]==0){
+                isCompleted[min]=true;
+                completion_time[min]=current_time;
+                completed++;
+            }
+        }
+        else{
+            current_time++;
+        }
+        console.log(current_time,array_bt);
+    }
+    let tat=turn_around_time(completion_time,array_at);
+    let wt=waiting_time(tat,bt);
+    console.log('completion time:'+completion_time);
+    console.log('tat time:'+tat);
+    console.log('waiting time:'+wt);
+    return [indices,array_at,bt,completion_time,tat,wt]   
+}
 function calculate(){
     let choice=document.getElementById("myOption").value;
     if(choice==""){
@@ -228,6 +271,7 @@ function calculate(){
     tableBody.innerHTML='';
     console.log(choice);
     let result;
+    let array_PT;
     switch (choice) {
         case "FCFS":
                 result=fcfs(array_AT,array_BT);//const result=fcfs(array_AT,array_BT);fcfs([2,5,0,0,7],[7,3,2,10,8]);
@@ -240,15 +284,18 @@ function calculate(){
             display(result)
             break;
         case "SRTF":
-            result=srtf([0,1,2,3],[8,4,9,5])
+            result=srtf(array_AT,array_BT)
             console.log(result)
             display(result)
             break;
         case "PPS":
-            
+            array_PT=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number)
+            result=pps([1,2,3,4,5],[10,9,8,7,6],[5,4,3,2,1])
+            console.log(result)
+            display(result)
             break;
         case "NPPS":
-            let array_PT=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number)
+            array_PT=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number)
             result=npps(array_AT,array_BT,array_PT)
             console.log(result)
             display(result)
