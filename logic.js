@@ -160,17 +160,18 @@ function calculate(){
     if(choice=="RR"){
         if(document.getElementById("R").value<1){
             alert("Time quantum shouldbe always positive!!!");
+            return;
         }
-        return;
     }
     let array_AT=document.getElementById("AT").value.split(' ').filter(item=>item!='').map(Number)
     let array_BT=document.getElementById("BT").value.split(' ').filter(item=>item!='').map(Number)
     let priority_array=document.getElementById("P").value.split(' ').filter(item=>item!='').map(Number);
         if(choice=="NPPS"||choice=="PPS"){
-            if(array_AT.length!=priority_array.length||array_BT.length!=priority_array.length)
-            document.getElementById("changeForPriority").innerHTML='Length of priority,arraival time and burst time should match';
-            show();
-            return;
+            if(array_AT.length!=priority_array.length||array_BT.length!=priority_array.length){
+                document.getElementById("changeForPriority").innerHTML='Length of priority,arraival time and burst time should match';
+                show();
+                return;
+            }
         }
         else if(array_AT.length!=array_BT.length){
             document.getElementById("changeForPriority").innerHTML='Length of Arrival time and Burst time does not Match';
